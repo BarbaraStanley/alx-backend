@@ -9,8 +9,8 @@ from typing import List, Tuple
 
 
 class Server:
-    """Server class to paginate a database of popular baby names.
-    """
+    """Server class to paginate a database of popular baby names """
+
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
@@ -28,6 +28,9 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        """Returns the content of the page specified
+    by the index range"""
+
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
 
@@ -38,12 +41,13 @@ class Server:
             return []
         else:
             return page_content[start: end]
-    
+
+
 def index_range(page: int, page_size: int) -> tuple:
     """Returns the index for the range of items specified
     by the page and page_size"""
-    
-    start: int = (page - 1) * page_size # since the page is 1-indexed
+
+    start: int = (page - 1) * page_size  # since the page is 1-indexed
     end: int = page*page_size
     page_index: tuple = (start, end)
     return page_index
